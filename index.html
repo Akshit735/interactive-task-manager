@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="app">
+        <header class="app-header">
+            <h1>My Tasks</h1>
+            <p>Plan your day. Get things done.</p>
+        </header>
+
+        <form id="task-form">
+            <label for="task-input">New task</label>
+            <div class="task-input-group">
+                <input
+                    type="text"
+                    id="task-input"
+                    placeholder="What needs to be done?"
+                    autocomplete="off"
+                >
+                <button type="submit" id="add-task-btn">
+                    Add Task
+                </button>
+            </div>
+        </form>
+
+        <section class="task-section" aria-label="Task list">
+            <div class="task-toolbar">
+                <h2>Your tasks</h2>
+
+                <div class="task-filters" aria-label="Filter tasks">
+                    <button type="button" data-filter="all"
+                        class="filter-btn active">All</button>
+                    <button type="button" data-filter="active"
+                        class="filter-btn">Active</button>
+                    <button type="button" data-filter="completed"
+                        class="filter-btn">Completed</button>
+                </div>
+            </div>
+
+            <p id="task-count">0 tasks remaining</p>
+
+            <ul id="task-list"></ul>
+
+            <p id="empty-message">No tasks yet. Add your first task!</p>
+        </section>
+    </main>
+</body>
+</html>

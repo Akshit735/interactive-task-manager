@@ -1,0 +1,272 @@
+
+/* 1. Design tokens */
+:root {
+    --primary: #865bdb;
+    --primary-hover: #5148c7;
+    --background: #2f2f3a;
+    --surface: #ffffff;
+    --text: #20243a;
+    --muted: #737991;
+    --border: #e5e8f0;
+    --success: #18865b;
+    --danger: #d64545;
+    --radius: 16px;
+    --shadow: 0 12px 40px rgba(32, 36, 58, 0.08);
+}
+
+/* 2. Predictable sizing */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 48px 20px;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+/* 3. Main application card */
+.app {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* 4. Header */
+.app-header {
+    margin-bottom: 28px;
+}
+
+.app-header h1 {
+    margin: 0 0 6px;
+    font-size: 2rem;
+    letter-spacing: -0.8px;
+}
+
+.app-header p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* 5. Form and input */
+#task-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.task-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+#task-input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#task-input::placeholder {
+    color: #9298aa;
+}
+
+#task-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 91, 219, 0.15);
+}
+
+/* 6. Buttons */
+button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#add-task-btn {
+    background: var(--primary);
+    color: white;
+}
+
+#add-task-btn:hover {
+    background: var(--primary-hover);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(99, 91, 219, 0.35);
+    outline-offset: 3px;
+}
+
+/* 7. Task section and toolbar */
+.task-section {
+    margin-top: 32px;
+}
+
+.task-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.task-toolbar h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.task-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.filter-btn {
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background: #f3f2ff;
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: #eeedff;
+    color: var(--primary);
+    border-color: #dedbff;
+}
+
+/* 8. Task count and list */
+#task-count {
+    margin: 16px 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+#task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* JavaScript will create .task-item elements */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.task-item .task-text {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.task-item.completed .task-text {
+    color: var(--muted);
+    text-decoration: line-through;
+}
+
+.task-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.task-item button {
+    padding: 7px 10px;
+    background: #f1f2f7;
+    color: var(--text);
+    font-size: 0.85rem;
+}
+
+.task-item button:hover {
+    background: #e5e7ef;
+}
+
+.task-item button.delete-btn {
+    background: #fff0f0;
+    color: var(--danger);
+}
+
+.task-item button.delete-btn:hover {
+    background: #ffe0e0;
+}
+
+/* 9. Empty state */
+#empty-message {
+    padding: 24px 12px;
+    color: var(--muted);
+    text-align: center;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+}
+
+/* 10. Responsive layout */
+@media (max-width: 520px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .app {
+        padding: 22px 16px;
+    }
+
+    .app-header h1 {
+        font-size: 1.7rem;
+    }
+
+    .task-input-group {
+        flex-direction: column;
+    }
+
+    #add-task-btn {
+        width: 100%;
+    }
+
+    .task-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .task-item {
+        flex-wrap: wrap;
+    }
+}
